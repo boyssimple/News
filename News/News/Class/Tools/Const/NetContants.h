@@ -12,6 +12,6 @@
 
 #define BASEURL @"http://lf.snssdk.com/"
 
-#define NetURL_HomeList @"api/news/feed/v50/?access=WIFI&app_name=news_article&channel=App";
+#define NetURL_HomeList @"api/news/feed/v50";
 
 #endif /* NetContants_h */

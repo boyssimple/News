@@ -63,6 +63,9 @@
     self = [super init];
     if (self) {
         _datas = [NSMutableArray array];
+        [self.args setObject:@"WIFI" forKey:@"access"];
+        [self.args setObject:@"news_article" forKey:@"app_name"];
+        [self.args setObject:@"App" forKey:@"channel"];
     }
     return self;
 }

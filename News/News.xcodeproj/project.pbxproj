@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C72D17D1E7EE5AF009B2DB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C72D17C1E7EE5AF009B2DB0 /* Assets.xcassets */; };
 		29AFBBF31E7BBEA0003BE021 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29AFBBF11E7BBEA0003BE021 /* Main.storyboard */; };
-		29AFBBF51E7BBEA0003BE021 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29AFBBF41E7BBEA0003BE021 /* Assets.xcassets */; };
 		29AFBBF81E7BBEA0003BE021 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29AFBBF61E7BBEA0003BE021 /* LaunchScreen.storyboard */; };
 		29AFBC361E7BC3FC003BE021 /* ApiObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AFBC071E7BC3FC003BE021 /* ApiObject.m */; };
 		29AFBC371E7BC3FC003BE021 /* ActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 29AFBC0A1E7BC3FC003BE021 /* ActionSheet.m */; };
@@ -35,9 +35,9 @@
 
 /* Begin PBXFileReference section */
 		18EE74855C815973C5E7919B /* Pods-News.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-News.release.xcconfig"; path = "Pods/Target Support Files/Pods-News/Pods-News.release.xcconfig"; sourceTree = "<group>"; };
+		1C72D17C1E7EE5AF009B2DB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		29AFBBE51E7BBE9F003BE021 /* News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = News.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29AFBBF21E7BBEA0003BE021 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		29AFBBF41E7BBEA0003BE021 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../Assets.xcassets; sourceTree = "<group>"; };
 		29AFBBF71E7BBEA0003BE021 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		29AFBC061E7BC3FC003BE021 /* ApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApiObject.h; sourceTree = "<group>"; };
 		29AFBC071E7BC3FC003BE021 /* ApiObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiObject.m; sourceTree = "<group>"; };
@@ -315,7 +315,7 @@
 		29AFBC1F1E7BC3FC003BE021 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				29AFBBF41E7BBEA0003BE021 /* Assets.xcassets */,
+				1C72D17C1E7EE5AF009B2DB0 /* Assets.xcassets */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -529,7 +529,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29AFBBF81E7BBEA0003BE021 /* LaunchScreen.storyboard in Resources */,
-				29AFBBF51E7BBEA0003BE021 /* Assets.xcassets in Resources */,
+				1C72D17D1E7EE5AF009B2DB0 /* Assets.xcassets in Resources */,
 				29AFBBF31E7BBEA0003BE021 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -549,7 +549,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		89E58695A0C738A81AF272C3 /* [CP] Copy Pods Resources */ = {

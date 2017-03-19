@@ -27,6 +27,7 @@
         [self.contentView addSubview:_lbTitle];
         
         _imageVG = [[UIView alloc]initWithFrame:CGRectZero];
+        _imageVG.backgroundColor = [UIColor redColor];
         [self.contentView addSubview:_imageVG];
         
         _vLine = [[UIView alloc]initWithFrame:CGRectZero];
@@ -40,17 +41,21 @@
     self.lbTitle.text = data.content.title;
     if (data.content.image_list.count == 3) {
         self.imageVG.hidden = NO;
-        CGFloat w = (DEVICEHEIGHT - 30 - 10)/3.0;
+        CGFloat w = (DEVICEWIDTH - 30 - 10)/3.0;
         self.imageVG.height = w * 1.5;
         NSInteger i = 0;
         for (HomeListImg *img in data.content.image_list) {
-            UIImageView *image = [[UIImageView alloc]initWithFrame:CGRectMake(i * w +i*5, 0, w, self.imageVG.height)];
+            NSLog(@"地址 :%@",img.url);
+            UIImageView *image = [[UIImageView alloc]initWithFrame:CGRectMake(i * w +i*5, 0, w, w*1.5)];
+            image.backgroundColor = [UIColor blueColor];
             [image downloadImage:img.url];
             [self.imageVG addSubview:image];
+            i++;
         }
     }else{
         self.imageVG.hidden = YES;
     }
+    [self setNeedsLayout];
 }
 
 - (void)layoutSubviews{
@@ -65,7 +70,6 @@
     
     r = self.imageVG.frame;
     r.size.width = self.lbTitle.width;
-    r.size.height = 0;
     r.origin.x = self.lbTitle.left;
     r.origin.y = self.lbTitle.bottom + 5;
     self.imageVG.frame = r;

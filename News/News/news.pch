@@ -18,6 +18,8 @@
 #import <MJRefresh/MJRefresh.h>
 #import "YYKit.h"
 #import "UIImageView+SDWebImage.h"
+#import "UIImageView+WebCache.h"
+
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "Global.h"
 #import "ApiObject.h"

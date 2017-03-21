@@ -23,11 +23,9 @@
         _lbTitle.font = FONT(17);
         _lbTitle.numberOfLines = 0;
         _lbTitle.backgroundColor = [UIColor clearColor];
-        _lbTitle.textColor = [UIColor blackColor];
         [self.contentView addSubview:_lbTitle];
         
         _imageVG = [[UIView alloc]initWithFrame:CGRectZero];
-        _imageVG.backgroundColor = [UIColor redColor];
         [self.contentView addSubview:_imageVG];
         
         _vLine = [[UIView alloc]initWithFrame:CGRectZero];

@@ -42,11 +42,10 @@
     if (data.content.image_list.count == 3) {
         self.imageVG.hidden = NO;
         CGFloat w = (DEVICEWIDTH - 30 - 10)/3.0;
-        self.imageVG.height = w * 1.5;
+        self.imageVG.height = w / 1.5;
         NSInteger i = 0;
         for (HomeListImg *img in data.content.image_list) {
-            NSLog(@"地址 :%@",img.url);
-            UIImageView *image = [[UIImageView alloc]initWithFrame:CGRectMake(i * w +i*5, 0, w, w*1.5)];
+            UIImageView *image = [[UIImageView alloc]initWithFrame:CGRectMake(i * w +i*5, 0, w, w/1.5)];
             image.backgroundColor = [UIColor blueColor];
             [image downloadImage:img.url];
             [self.imageVG addSubview:image];

@@ -24,6 +24,7 @@
 #import "Global.h"
 #import "ApiObject.h"
 #import "NetRequestTool.h"
+#import "NetRequestToolExt.h"
 #import "AFNetWorking.h"
 
 #endif /* AtChat_pch */

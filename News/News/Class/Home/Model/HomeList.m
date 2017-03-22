@@ -31,9 +31,21 @@
         obj = [[NetRequestTool shared] parseJson:xmlData];
     }
     self.title = [obj stringValueForKey:@"title" default:@""];
+    self.tag_id = [obj stringValueForKey:@"tag_id" default:@""];
     self.artcle_url = [obj stringValueForKey:@"url" default:@""];
     self.read_count = [obj stringValueForKey:@"read_count" default:@""];
     self.media_name = [obj stringValueForKey:@"media_name" default:@""];
+    self.like_count = [obj integerValueForKey:@"like_count" default:0];
+    
+    
+    self.has_video = [obj boolValueForKey:@"has_video" default:FALSE];
+    if (self.has_video) {
+        NSDictionary *video_detail_info = [obj objectForKey:@"video_detail_info"];
+        NSDictionary *d = [video_detail_info objectForKey:@"detail_video_large_image"];
+        self.detail_video_large_image = [d stringValueForKey:@"url" default:@""];
+    }
+    
+    
     [self.image_list removeAllObjects];
     NSArray *arrays = [obj objectForKey:@"image_list"];
     for (NSDictionary *dic in arrays) {

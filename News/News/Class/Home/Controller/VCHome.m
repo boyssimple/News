@@ -10,6 +10,7 @@
 #import "CellHome.h"
 #import "HomeList.h"
 #import "VCArticleDetail.h"
+#import "CellHomeLeftVideo.h"
 
 @interface VCHome ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *table;
@@ -24,20 +25,25 @@
     self.view.backgroundColor = [UIColor grayColor];
     _dataSource = [NSMutableArray array];
     [self.view addSubview:self.table];
-    [self loadData];
 }
 
 #pragma mark - Event
+
+- (void)loadNewData{
+    self.homeList.isLoadLocalCache = NO;
+    [self loadData];
+}
+
 - (void)loadData{
     __weak typeof(self) safeSelf = self;
     [[NetRequestTool shared]requestPost:self.homeList withSuccess:^(ApiObject *m) {
-        [_table.mj_header endRefreshing];
+        [safeSelf.table.mj_header endRefreshing];
         HomeList *t = (HomeList*)m;
         [safeSelf.dataSource removeAllObjects];
         [safeSelf.dataSource addObjectsFromArray:t.datas];
         [safeSelf.table reloadData];
     } withFailure:^(ApiObject *m) {
-        [_table.mj_header endRefreshing];
+        [safeSelf.table.mj_header endRefreshing];
     }];
 }
 
@@ -48,25 +54,44 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     HomeListData *data  = [self.dataSource objectAtIndex:indexPath.row];
-    return [CellHome calHeight:data];
+    
+    if(data.content.has_video){
+        return [CellHomeLeftVideo calHeight:data];
+    }else{
+        return [CellHome calHeight:data];
+    }
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *identifier = @"CellHome";
-    CellHome *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (!cell) {
-        cell = [[CellHome alloc]init];
-    }
     HomeListData *data  = [self.dataSource objectAtIndex:indexPath.row];
-    [cell loadData:data];
-    return cell;
+    
+    if(data.content.has_video){
+        
+        static NSString *identifier = @"CellHomeLeftVideo";
+        CellHomeLeftVideo *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (!cell) {
+            cell = [[CellHomeLeftVideo alloc]init];
+        }
+        [cell loadData:data];
+        return cell;
+    }else{
+        
+        static NSString *identifier = @"CellHome";
+        CellHome *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (!cell) {
+            cell = [[CellHome alloc]init];
+        }
+        [cell loadData:data];
+        return cell;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     HomeListData *data  = [self.dataSource objectAtIndex:indexPath.row];
     VCArticleDetail *vc = [[VCArticleDetail alloc]init];
-    vc.url = data.content.artcle_url;
+    vc.tag_id = data.content.tag_id;
+    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -78,7 +103,7 @@
         _table.dataSource = self;
         _table.separatorStyle = UITableViewCellSeparatorStyleNone;
         _table.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            [self loadData];
+            [self loadNewData];
         }];
         [_table.mj_header beginRefreshing];
     }

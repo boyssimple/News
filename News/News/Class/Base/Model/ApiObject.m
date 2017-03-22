@@ -14,6 +14,7 @@
     self = [super init];
     if (self) {
         _args = [[NSMutableDictionary alloc] init];
+        self.isLoadLocalCache = YES;
     }
     return self;
 }

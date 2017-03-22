@@ -9,5 +9,5 @@
 #import "VCBase.h"
 
 @interface VCArticleDetail : VCBase
-@property (nonatomic, strong) NSString *url;
+@property (nonatomic, strong) NSString *tag_id;
 @end

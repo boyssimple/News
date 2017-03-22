@@ -14,10 +14,16 @@
 
 @interface HomeListContent:NSObject
 @property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *tag_id;
 @property (nonatomic, strong) NSString *artcle_url;
 @property (nonatomic, strong) NSString *read_count;
 @property (nonatomic, strong) NSString *media_name;
 @property (nonatomic, strong) NSMutableArray *image_list;
+@property (nonatomic, strong) NSMutableArray *url_list;
+@property (nonatomic, assign) NSInteger like_count;
+@property (nonatomic, strong) NSString *detail_video_large_image;
+@property (nonatomic, assign) BOOL has_video;
+
 - (void)parseObj:(NSDictionary*)obj;
 @end
 
